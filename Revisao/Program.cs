@@ -70,6 +70,23 @@ namespace Revisao
                         break;
                     case "3":
                             //TODO: Calcular média geral
+                            decimal notaTotal = 0;
+                            var nrAlunos = 0; //Quantidade de alunos
+                    
+
+                            for (int i=0; i < alunos.Length; i++)
+                            {
+                                if(!string.IsNullOrEmpty(alunos[i].Nome)) //IsNullOrEmpty é um metodo para string que ele retorna se é nulo ou vazio se for retorna true se não for retorna false,// Se não for nulo vai retornar o aluno do numero do array
+                                {
+                                    notaTotal=notaTotal + alunos[i].Nota; //vai somar a nota total + a nota vinda do aluno do array
+                                    nrAlunos++; //vai inclementando o nrAlunos 
+                                }
+                            }
+
+                            var mediaGeral = notaTotal/nrAlunos;        //Calcular a media dos alunos
+                            Console.WriteLine("Media Geral: " + mediaGeral);
+
+
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(); //caso seja colocado um valor acima do 3
