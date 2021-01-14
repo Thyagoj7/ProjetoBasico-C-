@@ -1,4 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Text;
+using System.ComponentModel.Design.Serialization;
+using System.Data.Common;
+using System.Runtime.Serialization.Json;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Collections.Concurrent;
@@ -52,6 +57,15 @@ namespace Revisao
                         break;
                     case "2":
                             //TODO: Lista de Alunos
+                            foreach (var a in alunos)
+                            {   //NEste contexto o a é um objeto
+                                //Foreach Para cada a no array ou seja para cada aluno imprima
+                               
+                               if(!String.IsNullOrEmpty(a.Nome)) //IsNullOrEmpty é um metodo para string que ele retorna se é nulo ou vazio se for retorna true se não for retorna false
+                               {
+                                Console.WriteLine("ALUNO: " + a.Nome + "NOTA: " + a.Nota);
+                               }
+                            }
 
                         break;
                     case "3":
@@ -72,6 +86,7 @@ namespace Revisao
         
         private static  string ObterOpcaoUsuario()
         {
+            Console.WriteLine();
             Console.WriteLine("Informe a opção desejada:");
             Console.WriteLine("1- Inserir novo aluno");
             Console.WriteLine("2- Listar alunos");
