@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Internal;
+using System;
 
 namespace Revisao
 {
@@ -6,14 +7,10 @@ namespace Revisao
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Informe a opção desejada:");
-            Console.WriteLine("1- Inserir novo aluno");
-            Console.WriteLine("2- Listar alunos");
-            Console.WriteLine("3- Calcular média geral");
-            Console.WriteLine("X-sair");
-            COnsole.WriteLine();
+            string opcaoUsuario = ObterOpcaoUsuario(); //O methodo sera chamado por aqui
 
-            string OpcaoUsuario = Console.ReadLine();
+    
+            
 
             while (opcaoUsuario.ToUpper() != "x") //Mesmo se o usuario coloque um x minusculo eu vou transformar em maiusculo e comparar
             {
@@ -29,21 +26,30 @@ namespace Revisao
                             //TODO: Calcular média geral
                         break;
                     default:
-                        throw new ArgumentOutOfRangeExeption(); //caso seja colocado um valor acima do 3
+                        throw new ArgumentOutOfRangeException(); //caso seja colocado um valor acima do 3
                         
             
                 }
-            //Se for diferente de X ele le o codigo novamente
+                //Se for diferente de X ele le o codigo novamente
+                opcaoUsuario = ObterOpcaoUsuario();
+
+
+            
+            }
+        }
+        
+        private static  string ObterOpcaoUsuario()
+        {
             Console.WriteLine("Informe a opção desejada:");
             Console.WriteLine("1- Inserir novo aluno");
             Console.WriteLine("2- Listar alunos");
             Console.WriteLine("3- Calcular média geral");
             Console.WriteLine("X-sair");
-            COnsole.WriteLine();
+            Console.WriteLine();
 
-            string OpcaoUsuario = Console.ReadLine();
-
-            }
+            string opcaoUsuario = Console.ReadLine();
+            Console.WriteLine("");
+            return opcaoUsuario;
         }
     }
 }
