@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System.Resources;
+using System.Net.NetworkInformation;
+using System.ComponentModel;
+using System.Diagnostics.Contracts;
+using System.Text;
 using System.ComponentModel.Design.Serialization;
 using System.Data.Common;
 using System.Runtime.Serialization.Json;
@@ -84,7 +88,30 @@ namespace Revisao
                             }
 
                             var mediaGeral = notaTotal/nrAlunos;        //Calcular a media dos alunos
-                            Console.WriteLine("Media Geral: " + mediaGeral);
+                            Conceito conceitoGeral;
+                            
+                            if(mediaGeral < 2)
+                            {
+                                conceitoGeral = Conceito.E;
+                            }
+                            else if(mediaGeral < 4)
+                            {
+                                conceitoGeral = Conceito.D;
+                            }
+                            else if(mediaGeral < 6)
+                            {
+                                conceitoGeral = Conceito.C;
+                            }
+                            else if(mediaGeral < 8)
+                            {
+                                conceitoGeral = Conceito.B;
+                            }
+                            else 
+                            {
+                                conceitoGeral = Conceito.A;
+                            }
+
+                            Console.WriteLine("Media Geral: " + mediaGeral + "Conceito Geral " + conceitoGeral);
 
 
                         break;
